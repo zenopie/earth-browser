@@ -406,6 +406,13 @@ class EarthProxy:
                 self.handle_control_request(client_sock)
                 return
 
+            # Reject HTTPS (443) for .ret — Reticulum encrypts, no TLS needed
+            # Browser falls back to HTTP (80) automatically
+            if port == 443:
+                self.socks5_reply(client_sock, SOCKS_REPLY_SUCCESS)
+                client_sock.close()
+                return
+
             RNS.log(f"CONNECT to {dest_hash_hex}.ret:{port}")
 
             # Validate hex hash (should be 32 hex chars = 16 bytes)

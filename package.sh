@@ -95,11 +95,11 @@ sed -i '' 's/pref("dom.security.https_only_mode", true);/pref("dom.security.http
 sed -i '' 's/pref("dom.security.https_only_mode_pbm", true);/pref("dom.security.https_only_mode_pbm", false);/' "$PREFS"
 
 # Lock HTTPS upgrade prefs off (Reticulum encrypts, no TLS needed)
-echo 'pref("dom.security.https_first", false, locked);' >> "$PREFS"
-echo 'pref("dom.security.https_first_schemeless", false, locked);' >> "$PREFS"
-echo 'pref("browser.fixup.fallback-to-https", false, locked);' >> "$PREFS"
-echo 'pref("dom.security.https_only_mode", false, locked);' >> "$PREFS"
-echo 'pref("dom.security.https_only_mode_pbm", false, locked);' >> "$PREFS"
+echo 'pref("dom.security.https_first", false);' >> "$PREFS"
+echo 'pref("dom.security.https_first_schemeless", false);' >> "$PREFS"
+echo 'pref("browser.fixup.fallback-to-https", false);' >> "$PREFS"
+echo 'pref("dom.security.https_only_mode", false);' >> "$PREFS"
+echo 'pref("dom.security.https_only_mode_pbm", false);' >> "$PREFS"
 sed -i '' 's/pref("network.proxy.allow_bypass", false, locked);/pref("network.proxy.allow_bypass", true);/' "$PREFS"
 sed -i '' 's/pref("network.proxy.failover_direct", false, locked);/pref("network.proxy.failover_direct", true);/' "$PREFS"
 sed -i '' 's/pref("extensions.installDistroAddons", false);/pref("extensions.installDistroAddons", true);/' "$PREFS"
