@@ -110,6 +110,10 @@ cp "$SCRIPT_DIR/browser/patches/browser-siteIdentity.js" \
 cp "$SCRIPT_DIR/browser/patches/aboutTor.html" \
    "$WORK_B/chrome/browser/content/browser/abouttor/aboutTor.html"
 
+# Replace branding icons (tab icons, about page logo)
+cp "$SCRIPT_DIR/browser/patches/branding/"*.png \
+   "$WORK_B/chrome/browser/content/branding/"
+
 # Fix homepage default from about:tor to about:blank
 sed -i '' 's|pref("browser.startup.homepage", "about:tor");|pref("browser.startup.homepage", "about:blank");|' "$WORK_B/defaults/preferences/000-tor-browser.js"
 
