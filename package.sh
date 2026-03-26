@@ -58,6 +58,15 @@ rm -f "$BROWSER_DIR/Tor/tor" 2>/dev/null || true
 rm -f "$OUT/Contents/MacOS/Tor/tor" 2>/dev/null || true
 
 # -------------------------------------------------------------------------
+# Step 2b: Replace app icon
+# -------------------------------------------------------------------------
+if [ -f "$SCRIPT_DIR/earth-browser.icns" ]; then
+    echo "       Replacing app icon..."
+    cp "$SCRIPT_DIR/earth-browser.icns" "$RESOURCES/firefox.icns"
+    cp "$SCRIPT_DIR/earth-browser.icns" "$RESOURCES/document.icns"
+fi
+
+# -------------------------------------------------------------------------
 # Step 3: Patch browser/omni.ja
 # -------------------------------------------------------------------------
 echo "[3/7] Patching browser/omni.ja..."
