@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir rns
+RUN pip install --no-cache-dir rns lxmf
 
 COPY earthserv.py .
 COPY entrypoint.sh .
