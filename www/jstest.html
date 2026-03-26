@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JS Test — Earth Browser</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Test Page</h1>
+
+        <div class="info">
+            <h2>Inline Script Test</h2>
+            <p id="inline-test">INLINE SCRIPT: <strong style="color:#f56565;">NOT EXECUTED</strong> (CSP is working)</p>
+            <script>
+                document.getElementById("inline-test").innerHTML =
+                    'INLINE SCRIPT: <strong style="color:#ecc94b;">EXECUTED</strong> (CSP did NOT block it)';
+            </script>
+        </div>
+
+        <div class="info">
+            <h2>Event Handler Test</h2>
+            <button onclick="document.getElementById('onclick-test').textContent='EXECUTED'" style="padding:8px 16px; margin-bottom:8px;">Click me</button>
+            <p id="onclick-test">ONCLICK: not triggered yet</p>
+        </div>
+
+        <div class="info">
+            <h2>DOM Content</h2>
+            <p>If JavaScript is blocked, this page should show "NOT EXECUTED" in red above.</p>
+            <p>If JavaScript ran, it would show "EXECUTED" in yellow.</p>
+        </div>
+
+        <p><a href="/">&larr; Back to home</a></p>
+    </div>
+</body>
+</html>

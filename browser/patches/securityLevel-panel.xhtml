@@ -1,0 +1,34 @@
+<panel id="securityLevel-panel"
+       role="dialog"
+       type="arrow"
+       orient="vertical"
+       class="cui-widget-panel panel-no-padding">
+  <vbox id="securityLevel-background" class="panel-subview-body" style="padding: 12px; min-width: 260px;">
+    <html:p style="font-size: 11px; color: #8a9ab0; margin: 0 0 2px;">Reticulum Identity</html:p>
+    <html:p id="earth-identity-hash" style="font-family: monospace; font-size: 11px; color: #c8d0df; margin: 0 0 12px; word-break: break-all;">Loading...</html:p>
+
+    <html:p style="font-size: 11px; color: #8a9ab0; margin: 0 0 4px;">Privacy Mode</html:p>
+    <radiogroup id="earth-privacy-mode" style="margin: 0 0 12px;">
+      <radio label="Ephemeral Per-Session" value="ephemeral_session" style="font-size: 12px; margin: 2px 0;"/>
+      <radio label="Ephemeral Per-Destination" value="ephemeral_destination" style="font-size: 12px; margin: 2px 0;"/>
+      <radio label="Pinned Identity" value="pinned" style="font-size: 12px; margin: 2px 0;"/>
+    </radiogroup>
+
+    <html:hr style="border: none; border-top: 1px solid #2a3a50; margin: 4px 0 8px;"/>
+
+    <html:p style="font-size: 11px; color: #8a9ab0; margin: 0 0 4px;">JavaScript Security Level</html:p>
+    <radiogroup id="earth-js-level" style="margin: 0 0 8px;">
+      <radio label="Level 0 — Disabled (recommended)" value="0" style="font-size: 12px; margin: 2px 0;"/>
+      <radio label="Level 1 — Per-Destination Whitelist" value="1" style="font-size: 12px; margin: 2px 0;"/>
+      <radio label="Level 2 — Global (not recommended)" value="2" style="font-size: 12px; margin: 2px 0;"/>
+    </radiogroup>
+
+    <vbox id="earth-whitelist-section" hidden="true" style="margin: 0 0 8px;">
+      <html:p style="font-size: 11px; color: #8a9ab0; margin: 0 0 4px;">Current destination</html:p>
+      <html:p id="earth-current-dest" style="font-family: monospace; font-size: 10px; color: #6a7a90; margin: 0 0 4px; word-break: break-all;"></html:p>
+      <button id="earth-whitelist-toggle" style="font-size: 12px; padding: 4px 8px; margin: 0;"/>
+    </vbox>
+
+    <html:p style="font-size: 10px; color: #4a5568; margin: 0;">Reticulum encryption active. WebRTC, Service Workers, WebAssembly always blocked.</html:p>
+  </vbox>
+</panel>

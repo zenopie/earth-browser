@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.guestbook.json
+*.xpi
+.DS_Store
