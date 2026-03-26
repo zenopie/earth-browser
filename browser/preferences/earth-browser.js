@@ -251,3 +251,7 @@ pref("dom.event.clipboardevents.enabled", false);
 
 // Disable battery API (fingerprinting)
 pref("dom.battery.enabled", false);
+
+pref("dom.security.https_first", false);
+pref("dom.security.https_first_schemeless", false);
+pref("browser.fixup.fallback-to-https", false);
