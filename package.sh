@@ -106,6 +106,16 @@ cp "$SCRIPT_DIR/browser/patches/newidentity.js" \
 cp "$SCRIPT_DIR/browser/patches/browser-siteIdentity.js" \
    "$WORK_B/chrome/browser/content/browser/browser-siteIdentity.js"
 
+# Replace about:tor page with Earth Browser page
+cp "$SCRIPT_DIR/browser/patches/aboutTor.html" \
+   "$WORK_B/chrome/browser/content/browser/abouttor/aboutTor.html"
+
+# Fix homepage default from about:tor to about:blank
+sed -i '' 's|pref("browser.startup.homepage", "about:tor");|pref("browser.startup.homepage", "about:blank");|' "$WORK_B/defaults/preferences/000-tor-browser.js"
+
+# Fix default home page constant
+sed -i '' 's|const kDefaultHomePage = "about:tor";|const kDefaultHomePage = "about:blank";|' "$WORK_B/modules/HomePage.sys.mjs"
+
 # Patch security level panel in browser.xhtml
 python3 - "$WORK_B/chrome/browser/content/browser/browser.xhtml" "$SCRIPT_DIR/browser/patches/securityLevel-panel.xhtml" << 'XHTML_PATCH'
 import re, sys

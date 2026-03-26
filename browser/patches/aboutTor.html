@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Earth Browser</title>
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{background:#0a0e17;color:#c8d0df;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.7;display:flex;align-items:center;justify-content:center;min-height:100vh}
+      .page{max-width:480px;padding:40px 24px;text-align:center}
+      h1{font-size:28px;color:#e0e7f0;margin-bottom:6px;letter-spacing:0.02em}
+      .tag{color:#5a9a6e;font-size:14px;margin-bottom:36px}
+      .url-box{background:#111827;border:1px solid #2a3a50;border-radius:8px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:6px}
+      .url-prefix{color:#4a5568;font-family:monospace;font-size:13px}
+      .url-hash{color:#6a9fd8;font-family:monospace;font-size:13px}
+      .info{font-size:13px;color:#4a5568;line-height:1.8;margin-bottom:24px}
+      .info strong{color:#6a7a90}
+      .cards{display:flex;gap:12px;margin-bottom:24px;text-align:left}
+      .card{flex:1;background:#111827;border:1px solid #1e2838;border-radius:6px;padding:14px}
+      .card h3{font-size:12px;color:#5a9a6e;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+      .card p{font-size:12px;color:#6a7a90;margin:0}
+      .foot{font-size:11px;color:#2a3a50;margin-top:20px}
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Earth Browser</h1>
+      <p class="tag">Browsing over Reticulum</p>
+
+      <div class="url-box">
+        <span class="url-prefix">http://</span>
+        <span class="url-hash">&lt;destination_hash&gt;</span>
+        <span class="url-prefix">.ret</span>
+      </div>
+
+      <div class="info">
+        <p>Enter a <strong>.ret</strong> address to browse over the Reticulum network.</p>
+        <p>Regular websites work too. All <strong>.ret</strong> traffic is end-to-end encrypted.</p>
+        <p>Click the <strong>shield icon</strong> to manage identity, privacy mode, and JavaScript.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Encrypted</h3>
+          <p>X25519 + AES-256 on every link. No TLS needed.</p>
+        </div>
+        <div class="card">
+          <h3>Anonymous</h3>
+          <p>No source addresses. Servers can't see who you are.</p>
+        </div>
+        <div class="card">
+          <h3>Sovereign</h3>
+          <p>Addresses are keypairs you generate. No DNS, no CAs.</p>
+        </div>
+      </div>
+
+      <p class="foot">Earth Network (ERTH)</p>
+    </div>
+  </body>
+</html>
