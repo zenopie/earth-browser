@@ -198,21 +198,9 @@ cp "$SCRIPT_DIR/earthproxy.py" "$EARTH_DIR/"
 cp "$SCRIPT_DIR/earthserv.py" "$EARTH_DIR/"
 cp "$SCRIPT_DIR/requirements.txt" "$EARTH_DIR/"
 
-# Default Reticulum config (TCP on localhost for testing)
-cat > "$EARTH_DIR/rns_config/config" << 'RNS_CONF'
-[reticulum]
-  enable_transport = False
-  share_instance = Yes
-  shared_instance_port = 37428
-  instance_control_port = 37429
-
-[interfaces]
-  [[Local TCP Server]]
-    type = TCPServerInterface
-    interface_enabled = True
-    listen_ip = 127.0.0.1
-    listen_port = 4242
-RNS_CONF
+# Reticulum config — serves locally and accepts remote connections
+mkdir -p "$EARTH_DIR/rns_config"
+cp "$SCRIPT_DIR/config/server.conf" "$EARTH_DIR/rns_config/config"
 
 # -------------------------------------------------------------------------
 # Step 7: Create launcher
