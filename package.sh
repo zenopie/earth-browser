@@ -93,6 +93,11 @@ sed -i '' 's/pref("extensions.torlauncher.prompt_at_startup", true);/pref("exten
 sed -i '' 's/pref("torbrowser.settings.quickstart.enabled", false);/pref("torbrowser.settings.quickstart.enabled", true);/' "$PREFS"
 sed -i '' 's/pref("dom.security.https_only_mode", true);/pref("dom.security.https_only_mode", false);/' "$PREFS"
 sed -i '' 's/pref("dom.security.https_only_mode_pbm", true);/pref("dom.security.https_only_mode_pbm", false);/' "$PREFS"
+
+# Disable HTTPS-First and fallback-to-https (Reticulum encrypts, no TLS needed)
+echo 'pref("dom.security.https_first", false);' >> "$PREFS"
+echo 'pref("dom.security.https_first_schemeless", false);' >> "$PREFS"
+echo 'pref("browser.fixup.fallback-to-https", false);' >> "$PREFS"
 sed -i '' 's/pref("network.proxy.allow_bypass", false, locked);/pref("network.proxy.allow_bypass", true);/' "$PREFS"
 sed -i '' 's/pref("network.proxy.failover_direct", false, locked);/pref("network.proxy.failover_direct", true);/' "$PREFS"
 sed -i '' 's/pref("extensions.installDistroAddons", false);/pref("extensions.installDistroAddons", true);/' "$PREFS"
