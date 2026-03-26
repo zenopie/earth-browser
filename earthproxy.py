@@ -61,6 +61,7 @@ h1{font-size:28px;color:#1a1f36;margin-bottom:6px;letter-spacing:0.02em;font-wei
 </head>
 <body>
 <div class="page">
+<img src="http://_earth.ret/logo" alt="" style="width:80px;height:80px;margin-bottom:16px;">
 <h1>Earth Browser</h1>
 <p class="tag">Browsing over Reticulum</p>
 
@@ -721,6 +722,22 @@ class EarthProxy:
                     body = json.dumps({"ok": True, "whitelist": list(self.js_whitelist)}).encode()
                 else:
                     body = json.dumps({"error": "invalid action"}).encode()
+            elif path == "/logo":
+                logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "erth-browser.jpg")
+                if os.path.exists(logo_path):
+                    with open(logo_path, "rb") as f:
+                        body = f.read()
+                else:
+                    body = b""
+                response = (
+                    f"HTTP/1.1 200 OK\r\n"
+                    f"Content-Type: image/jpeg\r\n"
+                    f"Content-Length: {len(body)}\r\n"
+                    f"Connection: close\r\n\r\n"
+                ).encode() + body
+                client_sock.sendall(response)
+                client_sock.close()
+                return
             elif path == "/welcome":
                 body = WELCOME_HTML.encode("utf-8")
                 response = (
