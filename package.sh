@@ -66,6 +66,12 @@ if [ -f "$SCRIPT_DIR/earth-browser.icns" ]; then
     cp "$SCRIPT_DIR/earth-browser.icns" "$RESOURCES/document.icns"
 fi
 
+# Rebrand Info.plist
+if [ "$PLATFORM" = "macos" ]; then
+    sed -i '' 's/Tor Browser[^<]*/Earth Browser/g' "$OUT/Contents/Info.plist"
+    sed -i '' 's/The Tor Project/Earth Network/g' "$OUT/Contents/Info.plist"
+fi
+
 # -------------------------------------------------------------------------
 # Step 3: Patch browser/omni.ja
 # -------------------------------------------------------------------------
@@ -121,6 +127,10 @@ sed -i '' 's|pref("browser.startup.homepage", "about:tor");|pref("browser.startu
 sed -i '' 's|pref("app.update.auto", true);|pref("app.update.auto", false);|' "$WORK_B/defaults/preferences/000-tor-browser.js"
 echo 'pref("app.update.enabled", false);' >> "$WORK_B/defaults/preferences/000-tor-browser.js"
 echo 'pref("app.update.url", "");' >> "$WORK_B/defaults/preferences/000-tor-browser.js"
+
+# Rebrand: replace "Tor Browser" with "Earth Browser" in all locale files
+find "$WORK_B" -name "brand.properties" -exec sed -i '' 's/Tor Browser/Earth Browser/g;s/Tor Project/Earth Network/g' {} +
+find "$WORK_B" -name "brand.ftl" -exec sed -i '' 's/Tor Browser/Earth Browser/g;s/Tor Project/Earth Network/g' {} +
 
 # Fix default home page constant
 sed -i '' 's|const kDefaultHomePage = "about:tor";|const kDefaultHomePage = "about:blank";|' "$WORK_B/modules/HomePage.sys.mjs"
