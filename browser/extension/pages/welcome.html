@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Earth Browser</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0e17;
+      color: #c8d0df;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .page {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .logo {
+      display: block;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      color: #e0e7f0;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      text-align: center;
+      color: #5a9a6e;
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: #111827;
+      border: 1px solid #1e2838;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 17px;
+      color: #a0b0c8;
+      margin-bottom: 12px;
+    }
+    p { margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    strong { color: #e0e7f0; }
+
+    /* Privacy mode selection */
+    .mode-option {
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      border: 1px solid #2a3a50;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .mode-option:hover { border-color: #4a6a90; }
+    .mode-option.selected { border-color: #48bb78; background: #0f1f18; }
+    .mode-option label { cursor: pointer; display: block; }
+    .mode-option input { display: none; }
+    .mode-name {
+      font-weight: 600;
+      color: #e0e7f0;
+      font-size: 14px;
+    }
+    .mode-rec {
+      font-size: 11px;
+      color: #48bb78;
+      margin-left: 8px;
+    }
+    .mode-desc {
+      font-size: 13px;
+      color: #6a7a90;
+      margin-top: 4px;
+    }
+
+    /* Shield info */
+    .shield-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .shield-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .shield-dot.green { background: #48bb78; }
+    .shield-dot.yellow { background: #ecc94b; }
+    .shield-dot.red { background: #f56565; }
+    .shield-text { font-size: 13px; }
+
+    /* Start button */
+    .start-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 32px;
+      background: #1a3a28;
+      border: 1px solid #2a5a3a;
+      border-radius: 6px;
+      color: #48bb78;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+    .start-btn:hover { background: #224a32; }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #4a5568;
+    }
+
+    .step-indicator {
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 12px;
+      color: #4a5568;
+    }
+    .step-indicator span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2a3a50;
+      margin: 0 3px;
+    }
+    .step-indicator span.active { background: #48bb78; }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <!-- Step 1: Welcome -->
+  <div id="step1" class="page">
+    <img class="logo" src="../icons/earth-96.svg" alt="Earth Browser">
+    <h1>Welcome to Earth Browser</h1>
+    <p class="tagline">Privacy-hardened browsing over the Reticulum network</p>
+
+    <div class="step-indicator">
+      <span class="active"></span><span></span><span></span>
+    </div>
+
+    <div class="card">
+      <h2>What is Reticulum?</h2>
+      <p>Reticulum is a cryptography-based networking stack that provides:</p>
+      <ul>
+        <li><strong>End-to-end encryption</strong> on every connection (X25519 + AES-256)</li>
+        <li><strong>Initiator anonymity</strong> — servers cannot see your source address</li>
+        <li><strong>Self-sovereign addressing</strong> — destinations are cryptographic keypairs, not domain names</li>
+        <li><strong>Medium-agnostic transport</strong> — works over LoRa, packet radio, WiFi, TCP/IP, and more</li>
+      </ul>
+      <p>Earth Browser routes your web traffic through Reticulum instead of the regular internet. No TLS certificates, no DNS, no IP addresses — just cryptographic destinations.</p>
+    </div>
+
+    <div class="card">
+      <h2>How It Works</h2>
+      <p>You browse to <strong>.ret</strong> addresses like:</p>
+      <p style="text-align:center; font-family:monospace; color:#6a9fd8; font-size:13px; padding:8px; background:#0a0e17; border-radius:4px;">
+        http://a4f2b8c91d3e7f06a4f2b8c91d3e7f06.ret/
+      </p>
+      <p>Each address is a cryptographic destination hash. The proxy daemon (<strong>earthproxy</strong>) handles the SOCKS5 connection and establishes encrypted Reticulum links on your behalf.</p>
+    </div>
+
+    <button class="start-btn" id="btn-step2">Next: Choose Your Privacy Level</button>
+  </div>
+
+  <!-- Step 2: Privacy Mode -->
+  <div id="step2" class="page hidden">
+    <h1>Privacy Mode</h1>
+    <p class="tagline">How should Earth Browser manage your identity?</p>
+
+    <div class="step-indicator">
+      <span></span><span class="active"></span><span></span>
+    </div>
+
+    <div class="card">
+      <p>Your Reticulum identity is a cryptographic keypair. Privacy modes control when identities are created and destroyed.</p>
+
+      <div class="mode-option selected">
+        <label>
+          <input type="radio" name="mode" value="ephemeral_session" checked>
+          <span class="mode-name">Ephemeral Per-Session</span>
+          <span class="mode-rec">recommended</span>
+          <div class="mode-desc">Fresh identity each time you start the browser. No destination can correlate you across sessions. Best balance of privacy and usability.</div>
+        </label>
+      </div>
+
+      <div class="mode-option">
+        <label>
+          <input type="radio" name="mode" value="ephemeral_destination">
+          <span class="mode-name">Ephemeral Per-Destination</span>
+          <div class="mode-desc">Separate identity for each destination you visit, even within a single session. Maximum unlinkability but slightly slower connections.</div>
+        </label>
+      </div>
+
+      <div class="mode-option">
+        <label>
+          <input type="radio" name="mode" value="pinned">
+          <span class="mode-name">Pinned Identity</span>
+          <div class="mode-desc">Pin persistent identities to specific destinations for accounts and reputation. All other destinations use ephemeral identities.</div>
+        </label>
+      </div>
+    </div>
+
+    <button class="start-btn" id="btn-step3">Next: Security Overview</button>
+  </div>
+
+  <!-- Step 3: Security overview -->
+  <div id="step3" class="page hidden">
+    <h1>Security Defaults</h1>
+    <p class="tagline">Earth Browser ships locked down. You choose what to unlock.</p>
+
+    <div class="step-indicator">
+      <span></span><span></span><span class="active"></span>
+    </div>
+
+    <div class="card">
+      <h2>JavaScript Is Disabled</h2>
+      <p>JavaScript is the primary vector for browser fingerprinting, data exfiltration, and code execution. It's <strong>off by default</strong>.</p>
+      <p>You can enable it per-destination or globally via the shield icon in the toolbar:</p>
+
+      <div class="shield-row">
+        <span class="shield-dot green"></span>
+        <span class="shield-text"><strong>Green</strong> — JavaScript disabled. Maximum protection.</span>
+      </div>
+      <div class="shield-row">
+        <span class="shield-dot yellow"></span>
+        <span class="shield-text"><strong>Yellow</strong> — JavaScript enabled for this specific destination.</span>
+      </div>
+      <div class="shield-row">
+        <span class="shield-dot red"></span>
+        <span class="shield-text"><strong>Red</strong> — JavaScript enabled globally. Privacy degraded.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Always Blocked</h2>
+      <p>These remain disabled regardless of JavaScript settings:</p>
+      <ul>
+        <li>WebRTC (prevents IP leaks)</li>
+        <li>Service Workers &amp; WebAssembly</li>
+        <li>Geolocation, Bluetooth, USB, Serial APIs</li>
+        <li>Requests from .ret pages to non-Reticulum destinations</li>
+      </ul>
+      <p>All Tor Browser anti-fingerprinting patches remain active: canvas protection, letterboxing, font restriction, timing precision reduction.</p>
+    </div>
+
+    <button class="start-btn" id="btn-finish">Start Browsing</button>
+
+    <p class="footer">You can change these settings anytime via the shield icon or the options page.</p>
+  </div>
+
+  <script src="welcome.js"></script>
+</body>
+</html>

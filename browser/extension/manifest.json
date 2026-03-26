@@ -1,0 +1,58 @@
+{
+  "manifest_version": 2,
+  "name": "Earth Browser",
+  "version": "0.1.0",
+  "description": "Privacy and security controls for Earth Browser — browsing over Reticulum",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "earth-browser@earthnetwork.ret",
+      "strict_min_version": "102.0"
+    }
+  },
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "storage"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/shield-green-16.svg",
+      "32": "icons/shield-green-32.svg"
+    },
+    "default_popup": "popup/popup.html",
+    "default_title": "Earth Browser — JS Disabled"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.ret/*"],
+      "js": ["content/banner.js"],
+      "css": ["content/banner.css"],
+      "run_at": "document_start"
+    }
+  ],
+
+  "chrome_url_overrides": {
+    "newtab": "pages/newtab.html"
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "icons": {
+    "48": "icons/earth-48.svg",
+    "96": "icons/earth-96.svg"
+  }
+}

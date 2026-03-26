@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Earth Browser Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Earth Browser Settings</h1>
+
+    <section>
+      <h2>JavaScript Security Level</h2>
+      <div class="option">
+        <label>
+          <input type="radio" name="jsLevel" value="0">
+          <span class="level-dot green"></span>
+          <strong>Level 0 — Disabled</strong> (default, recommended)
+          <p class="desc">No JavaScript execution. Maximum privacy and security.</p>
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="jsLevel" value="1">
+          <span class="level-dot yellow"></span>
+          <strong>Level 1 — Per-Destination Whitelist</strong>
+          <p class="desc">JavaScript only on destinations you explicitly allow.</p>
+        </label>
+      </div>
+      <div class="option">
+        <label>
+          <input type="radio" name="jsLevel" value="2">
+          <span class="level-dot red"></span>
+          <strong>Level 2 — Global</strong> (not recommended)
+          <p class="desc">JavaScript enabled everywhere. Significantly degrades privacy.</p>
+        </label>
+      </div>
+    </section>
+
+    <section id="proxy-section">
+      <h2>Reticulum Proxy</h2>
+      <div id="proxy-status-row" class="status-row">
+        <span id="proxy-indicator" class="indicator off"></span>
+        <span id="proxy-status-text">Checking...</span>
+      </div>
+
+      <div id="privacy-mode-section" class="hidden">
+        <h3 class="sub-heading">Privacy Mode</h3>
+        <div class="option">
+          <label>
+            <input type="radio" name="privacyMode" value="ephemeral_session">
+            <strong>Ephemeral Per-Session</strong> (default, most private)
+            <p class="desc">Fresh identity each session. No destination can correlate you across sessions.</p>
+          </label>
+        </div>
+        <div class="option">
+          <label>
+            <input type="radio" name="privacyMode" value="ephemeral_destination">
+            <strong>Ephemeral Per-Destination</strong> (maximum unlinkability)
+            <p class="desc">Separate identity for each destination. Even within a session, destinations cannot link you.</p>
+          </label>
+        </div>
+        <div class="option">
+          <label>
+            <input type="radio" name="privacyMode" value="pinned">
+            <strong>Pinned Identity</strong> (for persistent presence)
+            <p class="desc">Pin a persistent identity to specific destinations for accounts and reputation.</p>
+          </label>
+        </div>
+      </div>
+
+      <div id="pinned-section" class="hidden">
+        <h3 class="sub-heading">Pinned Identities</h3>
+        <div id="pinned-empty" class="empty-msg">No pinned identities.</div>
+        <div id="pinned-list"></div>
+      </div>
+
+      <div id="proxy-stats" class="hidden">
+        <p class="desc">Connections: <span id="stat-connections">0</span> active, <span id="stat-total">0</span> total</p>
+      </div>
+    </section>
+
+    <section id="whitelist-section">
+      <h2>JavaScript Whitelist</h2>
+      <p class="desc">Destinations where JavaScript is allowed (Level 1 only).</p>
+      <div id="whitelist-empty" class="empty-msg">No destinations whitelisted.</div>
+      <div id="whitelist-list"></div>
+    </section>
+
+    <section>
+      <h2>Always Blocked</h2>
+      <p class="desc">These features are blocked regardless of JavaScript security level:</p>
+      <ul class="blocked-list">
+        <li>WebRTC (IP leak prevention)</li>
+        <li>Service Workers (persistent background execution)</li>
+        <li>Web Workers (side-channel timing attacks)</li>
+        <li>WebAssembly (native code execution)</li>
+        <li>Geolocation, Notification, Push APIs</li>
+        <li>Bluetooth, USB, Serial APIs</li>
+        <li>navigator.sendBeacon()</li>
+        <li>Requests to non-Reticulum destinations from .ret pages</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

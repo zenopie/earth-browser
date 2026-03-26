@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>New Tab — Earth Browser</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0e17;
+      color: #c8d0df;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .center {
+      text-align: center;
+      max-width: 480px;
+      padding: 40px;
+    }
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+    }
+    h1 {
+      font-size: 28px;
+      color: #e0e7f0;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .tagline {
+      color: #5a9a6e;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .url-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #111827;
+      border: 1px solid #2a3a50;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+    }
+    .url-prefix {
+      color: #4a5568;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .url-hash {
+      color: #6a9fd8;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 13px;
+    }
+    .info {
+      font-size: 13px;
+      color: #4a5568;
+      line-height: 1.8;
+    }
+    .info strong {
+      color: #6a7a90;
+    }
+    .key {
+      display: inline-block;
+      background: #1a2234;
+      border: 1px solid #2a3a50;
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 11px;
+      color: #8a9ab0;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <img class="logo" src="../icons/earth-96.svg" alt="Earth Browser">
+    <h1>Earth Browser</h1>
+    <p class="tagline">Browsing over Reticulum</p>
+
+    <div class="url-bar">
+      <span class="url-prefix">http://</span>
+      <span class="url-hash">&lt;destination_hash&gt;</span>
+      <span class="url-prefix">.ret</span>
+    </div>
+
+    <div class="info">
+      <p>Enter a <strong>.ret</strong> address to browse over the Reticulum network.</p>
+      <p>JavaScript is <strong>disabled</strong>. Click the shield icon to manage security levels.</p>
+      <p>All traffic is end-to-end encrypted. No IP addresses. No certificates.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 340px;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #c8d0df;
+  background: #0f1420;
+}
+
+#panel {
+  padding: 16px;
+}
+
+/* Header */
+#header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e2838;
+}
+
+#shield-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+}
+
+#shield-icon.green  { background: #2d6a3e; }
+#shield-icon.yellow { background: #8a7a2a; }
+#shield-icon.red    { background: #8a2a2a; }
+
+#status-text {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 14px;
+}
+
+.label {
+  font-size: 11px;
+  color: #6a7a90;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.mono {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 11px;
+  color: #8a9ab0;
+  word-break: break-all;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Level buttons */
+.level-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #a0aec0;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.level-btn:hover {
+  background: #1a2234;
+}
+
+.level-btn.active {
+  background: #1a2234;
+  border-color: #2a3a50;
+  color: #e0e7f0;
+}
+
+.level-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.level-dot.green  { background: #48bb78; }
+.level-dot.yellow { background: #ecc94b; }
+.level-dot.red    { background: #f56565; }
+
+/* Action buttons */
+.action-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  background: #1a2538;
+  border: 1px solid #2a3a50;
+  border-radius: 4px;
+  color: #c8d0df;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: #223048;
+}
+
+.action-btn.warn {
+  background: #3a3020;
+  border-color: #5a4a20;
+  color: #ecc94b;
+}
+
+.action-btn.warn:hover {
+  background: #4a4028;
+}
+
+.action-btn.danger {
+  background: #3a2020;
+  border-color: #5a2020;
+  color: #f56565;
+}
+
+.action-btn.danger:hover {
+  background: #4a2828;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #6a9fd8;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* Overlay / Warning dialogs */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.warning-box {
+  background: #111827;
+  border: 1px solid #2a3a50;
+  border-radius: 6px;
+  padding: 20px;
+  max-width: 340px;
+}
+
+.warning-box.critical {
+  border-color: #5a2020;
+}
+
+.warning-icon {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.warning-box h3 {
+  font-size: 14px;
+  color: #e0e7f0;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.dest-display {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 6px;
+  background: #0a0e17;
+  border-radius: 3px;
+}
+
+.warning-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #a0aec0;
+  margin-bottom: 14px;
+}
+
+.warning-text p {
+  margin-bottom: 8px;
+}
+
+.warning-text ul {
+  padding-left: 18px;
+  margin-bottom: 8px;
+}
+
+.warning-text li {
+  margin-bottom: 3px;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Proxy status */
+.proxy-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.indicator.on  { background: #48bb78; box-shadow: 0 0 4px #48bb78; }
+.indicator.off { background: #f56565; box-shadow: 0 0 4px #f56565; }
+
+.mode-select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: #0a0e17;
+  border: 1px solid #2a3a50;
+  border-radius: 4px;
+  color: #c8d0df;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mode-select:focus {
+  outline: none;
+  border-color: #4a6a90;
+}
+
+/* New Identity button */
+.new-identity-btn {
+  background: #1a2a3a !important;
+  border-color: #2a4a60 !important;
+  color: #6ab0e0 !important;
+  font-weight: 600;
+  text-align: center;
+}
+
+.new-identity-btn:hover {
+  background: #1e3248 !important;
+}
+
+.identity-display {
+  text-align: center;
+  padding: 4px 8px;
+  font-size: 10px;
+  color: #5a7a90;
+  word-break: break-all;
+}

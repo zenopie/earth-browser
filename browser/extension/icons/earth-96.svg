@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <circle cx="48" cy="48" r="40" fill="#0f1420" stroke="#2a3a50" stroke-width="2"/>
+  <ellipse cx="48" cy="48" rx="20" ry="40" fill="none" stroke="#2a4a3a" stroke-width="1"/>
+  <ellipse cx="48" cy="48" rx="32" ry="40" fill="none" stroke="#2a4a3a" stroke-width="0.7"/>
+  <path d="M8 48h80" stroke="#2a4a3a" stroke-width="1"/>
+  <path d="M14 30h68M14 66h68" stroke="#2a4a3a" stroke-width="0.7"/>
+  <circle cx="48" cy="48" r="40" fill="none" stroke="#48bb78" stroke-width="2"/>
+  <text x="48" y="55" text-anchor="middle" fill="#48bb78" font-size="18" font-weight="bold" font-family="sans-serif">ERTH</text>
+</svg>

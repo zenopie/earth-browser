@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="panel">
+    <div id="header">
+      <div id="shield-icon"></div>
+      <div id="status-text"></div>
+    </div>
+
+    <div id="dest-info" class="section hidden">
+      <div class="label">Destination</div>
+      <div id="dest-hash" class="mono"></div>
+    </div>
+
+    <div class="section">
+      <div class="label">JavaScript Security Level</div>
+
+      <button id="btn-level0" class="level-btn">
+        <span class="level-dot green"></span>
+        Level 0 — Disabled
+      </button>
+
+      <button id="btn-level1" class="level-btn">
+        <span class="level-dot yellow"></span>
+        Level 1 — Per-Destination
+      </button>
+
+      <button id="btn-level2" class="level-btn">
+        <span class="level-dot red"></span>
+        Level 2 — Global
+      </button>
+    </div>
+
+    <div id="whitelist-section" class="section hidden">
+      <div class="label">This Destination</div>
+      <button id="btn-whitelist-toggle" class="action-btn"></button>
+    </div>
+
+    <div class="section">
+      <button id="btn-new-identity" class="action-btn new-identity-btn">New Reticulum Identity</button>
+      <div id="identity-hash" class="mono identity-display hidden"></div>
+    </div>
+
+    <div id="proxy-section" class="section">
+      <div class="label">Reticulum Proxy</div>
+      <div id="proxy-status" class="proxy-row">
+        <span id="proxy-indicator" class="indicator off"></span>
+        <span id="proxy-status-text">Checking...</span>
+      </div>
+      <div id="privacy-mode-row" class="hidden">
+        <select id="privacy-mode-select" class="mode-select">
+          <option value="ephemeral_session">Ephemeral Per-Session</option>
+          <option value="ephemeral_destination">Ephemeral Per-Destination</option>
+          <option value="pinned">Pinned Identity</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <button id="btn-options" class="link-btn">Manage whitelist &amp; settings</button>
+    </div>
+  </div>
+
+  <!-- Level 1 whitelist confirmation -->
+  <div id="confirm-l1" class="overlay hidden">
+    <div class="warning-box">
+      <div class="warning-icon">&#9888;</div>
+      <h3>Enable JavaScript for this destination?</h3>
+      <p class="dest-display mono" id="confirm-dest"></p>
+      <div class="warning-text">
+        <p>Enabling JavaScript allows this destination to:</p>
+        <ul>
+          <li>Run arbitrary code on your machine</li>
+          <li>Fingerprint your browser and hardware</li>
+          <li>Potentially exfiltrate data if your machine has IP connectivity</li>
+          <li>Track you across page loads via local storage</li>
+          <li>Exploit rendering engine vulnerabilities</li>
+        </ul>
+        <p>Reticulum protects your transport. JavaScript bypasses that protection at the endpoint.</p>
+      </div>
+      <div class="btn-row">
+        <button id="btn-l1-session" class="action-btn warn">Enable for this session</button>
+        <button id="btn-l1-permanent" class="action-btn warn">Enable and remember</button>
+        <button id="btn-l1-cancel" class="action-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Level 2 confirmation -->
+  <div id="confirm-l2" class="overlay hidden">
+    <div class="warning-box critical">
+      <div class="warning-icon">&#9888;</div>
+      <h3>Global JavaScript Enabled</h3>
+      <div class="warning-text">
+        <p>You are enabling JavaScript for <strong>ALL</strong> destinations. This significantly degrades your privacy and security.</p>
+        <p>With global JS enabled, any destination you visit can:</p>
+        <ul>
+          <li>Fingerprint your browser, hardware, and behavior patterns</li>
+          <li>Execute arbitrary code in your browser</li>
+          <li>Attempt to exfiltrate data through any available network interface</li>
+          <li>Correlate your identity across destinations</li>
+          <li>Exploit browser vulnerabilities for code execution</li>
+        </ul>
+        <p>Earth Browser's transport privacy (Reticulum encryption, initiator anonymity, identity management) remains active, but JavaScript can undermine these protections at the application layer.</p>
+        <p><strong>This is equivalent to running a standard browser. You lose most of the privacy benefits Earth Browser is designed to provide.</strong></p>
+      </div>
+      <div class="btn-row">
+        <button id="btn-l2-confirm" class="action-btn danger">I understand the risks — enable global JS</button>
+        <button id="btn-l2-cancel" class="action-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
