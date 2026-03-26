@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="erth-browser.jpg" alt="Earth Browser" width="200">
+</p>
+
 # Earth Browser
 
 A Tor Browser fork that replaces the Tor onion routing network with the [Reticulum](https://reticulum.network/) cryptographic networking stack. The result is a privacy-hardened browser that renders HTML+CSS over Reticulum transport, with JavaScript disabled by default.
