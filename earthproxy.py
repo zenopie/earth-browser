@@ -40,68 +40,58 @@ WELCOME_HTML = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Welcome to Earth Browser</title>
+<title>Earth Browser</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0e17;color:#c8d0df;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.7}
-.page{max-width:560px;margin:0 auto;padding:48px 24px}
-h1{text-align:center;font-size:26px;color:#e0e7f0;margin-bottom:6px}
-.tag{text-align:center;color:#5a9a6e;font-size:14px;margin-bottom:36px}
-.card{background:#111827;border:1px solid #1e2838;border-radius:8px;padding:20px;margin-bottom:20px}
-h2{font-size:16px;color:#a0b0c8;margin-bottom:10px}
-p{margin-bottom:10px}
-ul{padding-left:20px;margin-bottom:10px}
-li{margin-bottom:4px}
-strong{color:#e0e7f0}
-.mono{font-family:monospace;font-size:13px;color:#6a9fd8;background:#0a0e17;padding:6px 10px;border-radius:4px;display:block;text-align:center;margin:8px 0}
-.foot{text-align:center;margin-top:32px;font-size:12px;color:#4a5568}
-.shield{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;margin-right:4px}
-.g{background:#48bb78}.y{background:#ecc94b}.r{background:#f56565}
+body{background:#0a0e17;color:#c8d0df;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.7;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.page{max-width:480px;padding:40px 24px;text-align:center}
+h1{font-size:28px;color:#e0e7f0;margin-bottom:6px;letter-spacing:0.02em}
+.tag{color:#5a9a6e;font-size:14px;margin-bottom:36px}
+.url-box{background:#111827;border:1px solid #2a3a50;border-radius:8px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:6px}
+.url-prefix{color:#4a5568;font-family:monospace;font-size:13px}
+.url-hash{color:#6a9fd8;font-family:monospace;font-size:13px}
+.info{font-size:13px;color:#4a5568;line-height:1.8;margin-bottom:24px}
+.info strong{color:#6a7a90}
+.cards{display:flex;gap:12px;margin-bottom:24px;text-align:left}
+.card{flex:1;background:#111827;border:1px solid #1e2838;border-radius:6px;padding:14px}
+.card h3{font-size:12px;color:#5a9a6e;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+.card p{font-size:12px;color:#6a7a90;margin:0}
+.foot{font-size:11px;color:#2a3a50;margin-top:20px}
 </style>
 </head>
 <body>
 <div class="page">
-<h1>Welcome to Earth Browser</h1>
-<p class="tag">Privacy-hardened browsing over the Reticulum network</p>
+<h1>Earth Browser</h1>
+<p class="tag">Browsing over Reticulum</p>
 
-<div class="card">
-<h2>What is Reticulum?</h2>
-<p>Reticulum is a cryptographic networking stack providing:</p>
-<ul>
-<li><strong>End-to-end encryption</strong> on every connection (X25519 + AES-256)</li>
-<li><strong>Initiator anonymity</strong> &mdash; servers cannot see your source address</li>
-<li><strong>Self-sovereign addressing</strong> &mdash; destinations are cryptographic keypairs</li>
-<li><strong>Medium-agnostic transport</strong> &mdash; LoRa, packet radio, WiFi, TCP/IP, anything</li>
-</ul>
+<div class="url-box">
+<span class="url-prefix">http://</span>
+<span class="url-hash">&lt;destination_hash&gt;</span>
+<span class="url-prefix">.ret</span>
 </div>
 
-<div class="card">
-<h2>Browsing</h2>
-<p>Navigate to <strong>.ret</strong> addresses:</p>
-<div class="mono">http://&lt;destination_hash&gt;.ret/</div>
-<p>All traffic is end-to-end encrypted. No TLS, no DNS, no IP addresses.</p>
-<p>Regular websites work too &mdash; just type any URL.</p>
+<div class="info">
+<p>Enter a <strong>.ret</strong> address to browse over the Reticulum network.</p>
+<p>Regular websites work too. All <strong>.ret</strong> traffic is end-to-end encrypted.</p>
+<p>Click the <strong>shield icon</strong> to manage identity, privacy mode, and JavaScript.</p>
 </div>
 
+<div class="cards">
 <div class="card">
-<h2>The Shield Icon</h2>
-<p>Click the shield in the toolbar to manage:</p>
-<p><span class="shield g"></span> <strong>Identity</strong> &mdash; your Reticulum keypair</p>
-<p><span class="shield g"></span> <strong>Privacy mode</strong> &mdash; how identities are managed</p>
-<p><span class="shield g"></span> <strong>JavaScript level</strong> &mdash; disabled by default for safety</p>
+<h3>Encrypted</h3>
+<p>X25519 + AES-256 on every link. No TLS needed.</p>
+</div>
+<div class="card">
+<h3>Anonymous</h3>
+<p>No source addresses. Servers can't see who you are.</p>
+</div>
+<div class="card">
+<h3>Sovereign</h3>
+<p>Addresses are keypairs you generate. No DNS, no CAs.</p>
+</div>
 </div>
 
-<div class="card">
-<h2>Always Blocked</h2>
-<p>Regardless of settings, these remain disabled:</p>
-<ul>
-<li>WebRTC, Service Workers, WebAssembly</li>
-<li>Geolocation, Bluetooth, USB, Serial APIs</li>
-<li>All Tor Browser anti-fingerprinting patches remain active</li>
-</ul>
-</div>
-
-<p class="foot">Earth Browser &mdash; part of the Earth Network (ERTH) ecosystem</p>
+<p class="foot">Earth Network (ERTH)</p>
 </div>
 </body>
 </html>"""

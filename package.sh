@@ -249,15 +249,7 @@ except: exit(1)
     sleep 0.5
 done
 
-# First-run: open welcome page
-FIRST_RUN_FLAG="$HOME/.earthbrowser/.first_run_done"
-if [ ! -f "$FIRST_RUN_FLAG" ]; then
-    mkdir -p "$(dirname "$FIRST_RUN_FLAG")"
-    touch "$FIRST_RUN_FLAG"
-    "$SCRIPT_DIR/firefox" --purgecaches "http://_earth.ret/welcome" "$@"
-else
-    "$SCRIPT_DIR/firefox" --purgecaches "$@"
-fi
+"$SCRIPT_DIR/firefox" --purgecaches "http://_earth.ret/welcome" "$@"
 LAUNCHER
     chmod +x "$BROWSER_DIR/earth-browser"
 fi
