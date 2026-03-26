@@ -198,9 +198,9 @@ cp "$SCRIPT_DIR/earthproxy.py" "$EARTH_DIR/"
 cp "$SCRIPT_DIR/earthserv.py" "$EARTH_DIR/"
 cp "$SCRIPT_DIR/requirements.txt" "$EARTH_DIR/"
 
-# Reticulum config — serves locally and accepts remote connections
+# Reticulum config — client only (connects out, doesn't accept incoming)
 mkdir -p "$EARTH_DIR/rns_config"
-cp "$SCRIPT_DIR/config/server.conf" "$EARTH_DIR/rns_config/config"
+cp "$SCRIPT_DIR/config/client.conf" "$EARTH_DIR/rns_config/config"
 
 # -------------------------------------------------------------------------
 # Step 7: Create launcher
