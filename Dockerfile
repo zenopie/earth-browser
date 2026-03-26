@@ -5,12 +5,12 @@ WORKDIR /app
 RUN pip install --no-cache-dir rns
 
 COPY earthserv.py .
+COPY entrypoint.sh .
 COPY www/ ./www/
 COPY config/server.conf ./rns_config/config
 
-# Identity file gets mounted as a volume to persist the .ret address
-VOLUME /app/identity
+RUN chmod +x entrypoint.sh
 
 EXPOSE 4243
 
-CMD ["python3", "-u", "earthserv.py", "./www", "-i", "/app/identity/earthserv.id", "-c", "./rns_config"]
+ENTRYPOINT ["./entrypoint.sh"]
