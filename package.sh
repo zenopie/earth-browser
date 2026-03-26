@@ -117,6 +117,11 @@ cp "$SCRIPT_DIR/browser/patches/branding/"*.png \
 # Fix homepage default from about:tor to about:blank
 sed -i '' 's|pref("browser.startup.homepage", "about:tor");|pref("browser.startup.homepage", "about:blank");|' "$WORK_B/defaults/preferences/000-tor-browser.js"
 
+# Disable auto-updates
+sed -i '' 's|pref("app.update.auto", true);|pref("app.update.auto", false);|' "$WORK_B/defaults/preferences/000-tor-browser.js"
+echo 'pref("app.update.enabled", false);' >> "$WORK_B/defaults/preferences/000-tor-browser.js"
+echo 'pref("app.update.url", "");' >> "$WORK_B/defaults/preferences/000-tor-browser.js"
+
 # Fix default home page constant
 sed -i '' 's|const kDefaultHomePage = "about:tor";|const kDefaultHomePage = "about:blank";|' "$WORK_B/modules/HomePage.sys.mjs"
 
