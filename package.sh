@@ -93,6 +93,7 @@ sed -i '' 's/pref("extensions.torlauncher.prompt_at_startup", true);/pref("exten
 sed -i '' 's/pref("torbrowser.settings.quickstart.enabled", false);/pref("torbrowser.settings.quickstart.enabled", true);/' "$PREFS"
 sed -i '' 's/pref("dom.security.https_only_mode", true);/pref("dom.security.https_only_mode", false);/' "$PREFS"
 sed -i '' 's/pref("dom.security.https_only_mode_pbm", true);/pref("dom.security.https_only_mode_pbm", false);/' "$PREFS"
+echo 'pref("browser.fixup.domainsuffixwhitelist.ret", true);' >> "$PREFS"
 
 # Lock HTTPS upgrade prefs off (Reticulum encrypts, no TLS needed)
 echo 'pref("dom.security.https_first", false);' >> "$PREFS"
