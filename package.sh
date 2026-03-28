@@ -268,7 +268,7 @@ PROXY_PID=$!
 for i in $(seq 1 30); do
     python3 -c "
 import socket; s = socket.socket(); s.settimeout(1)
-try: s.connect(('127.0.0.1', 9150)); s.close(); exit(0)
+try: s.connect(('127.0.0.1', 9152)); s.close(); exit(0)
 except: exit(1)
 " 2>/dev/null && break
     sleep 0.5

@@ -31,7 +31,7 @@ pref("browser.startup.homepage", "about:blank");
 // Manual proxy config pointing to earthproxy SOCKS5
 pref("network.proxy.type", 1);
 pref("network.proxy.socks", "127.0.0.1");
-pref("network.proxy.socks_port", 9150);
+pref("network.proxy.socks_port", 9152);
 pref("network.proxy.socks_version", 5);
 pref("network.proxy.socks_remote_dns", true);
 pref("network.proxy.no_proxies_on", "");

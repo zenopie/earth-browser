@@ -824,8 +824,8 @@ def load_config():
 
     settings = {
         "listen_addr": "127.0.0.1",
-        "listen_port": 9150,
-        "control_port": 9151,
+        "listen_port": 9152,
+        "control_port": 9153,
         "privacy_mode": "ephemeral_session",
         "pinned_fallback": "ephemeral_session",
         "pinned_identities": {},
